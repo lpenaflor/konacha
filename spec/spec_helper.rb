@@ -5,6 +5,7 @@ ENV["RAILS_ENV"] = "development"
 
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require "rspec/rails"
+require "devise"
 
 # Preload to avoid occasional tilt warnings about thread safety
 require "coffee_script"
@@ -47,6 +48,7 @@ RSpec.configure do |config|
     c.syntax = [:expect, :should]
   end
 
+  config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include Konacha::FeatureSpec, :type => :feature
 end
 
